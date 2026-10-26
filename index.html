@@ -1,18 +1,44 @@
-<video id="clip" muted loop playsinline preload="metadata"
-       style="width:100%;height:auto;display:block;">
-    <source src="YOUR_VIDEO_URL.mp4" type="video/mp4">
-</video>
-
-<script>
-const video = document.getElementById("clip");
-
-const observer = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
-        video.play().catch(() => {});
-    } else {
-        video.pause();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio Video</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: transparent;
     }
-}, { threshold: 0.25 });
 
-observer.observe(video);
-</script>
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+
+  <video id="clip" muted loop playsinline preload="metadata">
+    <source src="YOUR_VIDEO_URL.mp4" type="video/mp4">
+    Your browser does not support HTML video.
+  </video>
+
+  <script>
+    const video = document.getElementById("clip");
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    }, { threshold: 0.25 });
+
+    observer.observe(video);
+  </script>
+
+</body>
+</html>
